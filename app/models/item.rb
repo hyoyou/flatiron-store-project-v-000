@@ -5,7 +5,12 @@ class Item < ActiveRecord::Base
 
   def self.available_items
     self.all.select do |item|
-      item if item.inventory != 0
+      item if item.inventory > 0
     end
   end
+
+  def available_item?
+    self.inventory > 0
+  end
+
 end
